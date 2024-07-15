@@ -31,6 +31,22 @@ importers:
         specifier: ^3.64.0
         version: 3.64.0(@cloudflare/workers-types@4.20240712.0)
 
+  apps/n2s:
+    dependencies:
+      '@b28n/b28n':
+        specifier: workspace:*
+        version: link:../../packages/b28n
+    devDependencies:
+      '@cloudflare/workers-types':
+        specifier: ^4.20240712.0
+        version: 4.20240712.0
+      typescript:
+        specifier: ^5.5.3
+        version: 5.5.3
+      wrangler:
+        specifier: ^3.64.0
+        version: 3.64.0(@cloudflare/workers-types@4.20240712.0)
+
   packages/b28n: {}
 
 packages:

@@ -1,0 +1,11 @@
+name = "b28n-api"
+main = "src/index.ts"
+compatibility_date = "2023-09-22"
+
+account_id = "YOUR_ACCOUNT_ID" # ← Replace with your Account ID.
+workers_dev = true
+
+[[r2_buckets]]
+binding = 'DATA_BUCKET'
+bucket_name = 'b28n'
+preview_bucket_name = 'preview-b28n'
