@@ -12,6 +12,7 @@ export default {
     const { pathname, searchParams } = new URL(url);
 
     const query = searchParams.get('q');
+    const decodedQuery = decodeURIComponent(query || '');
 
     const translator = new b28n.B28n();
 
@@ -21,18 +22,18 @@ export default {
           case '/':
             return new Response('H3o, w3d!');
           case '/decode':
-            if (!query) {
+            if (!decodedQuery) {
               return new Response('Bad Request', { status: 400 });
             }
 
-            const decoded = await translator.decode(query);
+            const decoded = await translator.decode(decodedQuery);
             return new Response(decoded);
           case '/encode':
-            if (!query) {
+            if (!decodedQuery) {
               return new Response('Bad Request', { status: 400 });
             }
 
-            const encoded = await translator.encode(query);
+            const encoded = await translator.encode(decodedQuery);
             return new Response(encoded);
           default:
             return new Response('Not Found', { status: 404 });
