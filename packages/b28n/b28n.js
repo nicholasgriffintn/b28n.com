@@ -1,8 +1,32 @@
-import trainedData from './data/trained/en-GB.json';
+export async function streamToJson(stream) {
+  return await new Response(stream).json();
+}
 
 export class B28n {
-  constructor() {
-    this.decoderLookup = trainedData;
+  constructor({ bucket }) {
+    this.decoderLookup = {};
+    this.bucket = bucket;
+  }
+
+  async loadLookup(key = 'data/trained/en-GB.json') {
+    try {
+      if (!this.bucket) {
+        throw new Error('No bucket provided');
+      }
+
+      const object = await this.bucket.get(key);
+
+      if (!object) {
+        throw new Error('No object found');
+      }
+
+      const objectBody = object.body;
+      const jsonBody = await streamToJson(objectBody);
+
+      this.decoderLookup = jsonBody;
+    } catch (error) {
+      console.error('Error loading lookup', error);
+    }
   }
 
   #registerInLookup(word, encodedWord, previousEncodedWord = null) {

@@ -3,18 +3,17 @@ import * as b28n from '@b28n/b28n';
 import type { Env } from './types';
 
 export default {
-  async fetch(
-    request: Request,
-    env: Env,
-    ctx: ExecutionContext
-  ): Promise<Response> {
+  async fetch(request: Request, env: Env): Promise<Response> {
     const { method, url } = request;
     const { pathname, searchParams } = new URL(url);
 
     const query = searchParams.get('q');
     const decodedQuery = decodeURIComponent(query || '');
 
-    const translator = new b28n.B28n();
+    const translator = new b28n.B28n({
+      bucket: env.DATA_BUCKET,
+    });
+    await translator.loadLookup();
 
     switch (method) {
       case 'GET':

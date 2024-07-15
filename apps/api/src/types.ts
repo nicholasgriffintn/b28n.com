@@ -1,3 +1,4 @@
 export interface Env {
-  ENVIRONMENT?: string;
+  ENVIRONMENT: string;
+  DATA_BUCKET: string;
 }
