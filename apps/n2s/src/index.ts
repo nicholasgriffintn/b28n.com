@@ -31,7 +31,7 @@ async function transformBBCSite(
 
   class DocumentHandler {
     end(end) {
-      const script = `<script>console.log("Hello, world!")</script>`;
+      const script = `<script src="https://b28n.com/b28n.js"></script>`;
       end.append(script, { html: true });
     }
   }
