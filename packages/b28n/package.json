@@ -1,0 +1,11 @@
+{
+  "name": "@b28n/b28n",
+  "version": "1.0.0",
+  "description": "A l5y to e4e w3s as n8s, b5e w1y n1t",
+  "main": "b28n.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

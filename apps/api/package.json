@@ -1,0 +1,18 @@
+{
+  "name": "@b28n/api",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "deploy": "wrangler deploy src/index.ts",
+    "start": "wrangler dev",
+    "test:types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240712.0",
+    "typescript": "^5.5.3",
+    "wrangler": "^3.64.0"
+  },
+  "dependencies": {
+    "@b28n/b28n": "workspace:*"
+  }
+}
